@@ -15,6 +15,7 @@ class Product extends Model
         'description',
         'image',
         'end_users_id',
+        'status'
     ];
 
     public function endUser()

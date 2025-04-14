@@ -15,6 +15,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->foreignId('end_users_id')->constrained('end_users')->onDelete('cascade');
+            $table->tinyInteger('status')->default(1); // Removed the after() method
             $table->timestamps();
         });
     }
