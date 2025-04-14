@@ -12,8 +12,10 @@ class ProductStatsController extends Controller
     {
         $user = $request->user();
         
-        $totalProducts = Product::count();
-        $userProducts = Product::where('end_users_id', $user->id)->count();
+        $totalProducts = Product::where('status', 1)->count();
+        $userProducts = Product::where('end_users_id', $user->id)
+                             ->where('status', 1)
+                             ->count();
 
         return response()->json([
             'totalProducts' => $totalProducts,
