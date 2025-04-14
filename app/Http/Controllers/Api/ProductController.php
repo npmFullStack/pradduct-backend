@@ -34,7 +34,7 @@ class ProductController extends Controller
   }
 
   public function userProducts(Request $request)
-  {
+{
     $products = Product::where("end_users_id", $request->user()->id)
       ->where("status", 1)
       ->get()
@@ -44,7 +44,7 @@ class ProductController extends Controller
           "name" => $product->name,
           "price" => $product->price,
           "description" => $product->description,
-          "image" => $product->image ? Storage::url($product->image) : null,
+          "image" => $product->image ? asset("storage/{$product->image}") : null,
           "end_user" => [
             "firstname" => $product->endUser->firstname,
             "lastname" => $product->endUser->lastname,
@@ -53,7 +53,7 @@ class ProductController extends Controller
       });
 
     return response()->json($products);
-  }
+}
 
   public function store(Request $request)
   {
