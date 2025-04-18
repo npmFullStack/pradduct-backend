@@ -1,0 +1,1 @@
+web: cd public && ../vendor/bin/heroku-php-apache2
